@@ -8,4 +8,5 @@ https://app.swaggerhub.com/apis/mikaaillc/insurance-campaign/1.0
 - Burada kampanya türleri için EnumCategory adında enum oluşturulmuştur. Durum yöntimi içinde EnumStatus adında Enum oluşturulmuş bunların değiştirlmeyeceği kabul edilmiştir. Bunlar farklı bir tabloda da tutularak daha dinamik hale getirilebilir.
 - İstatistik dataları için entityManager ile query oluşturulmuştur .Servis ucu eklemiştir.
 - Durum değişikliği servisinde yapılan kontroller ise mükerer olan kayıtlar için durum güncellemesi yapılamamaktadır.Bu durum değişkliğinin takibi için log servis oluşturulmuştur önceki durum ve sonraki durum oluşturma tarihi vs. gibi alanlar tutulmuştur.
+- H2 Database kullanılmıştır.
 - Unit testler için jUnit kullanımıştır.
