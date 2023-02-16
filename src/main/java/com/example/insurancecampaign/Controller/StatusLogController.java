@@ -1,6 +1,7 @@
 package com.example.insurancecampaign.Controller;
 
 
+import com.example.insurancecampaign.Annotations.LogTime;
 import com.example.insurancecampaign.Models.LogModel;
 import com.example.insurancecampaign.Models.StatisticsModel;
 import com.example.insurancecampaign.Service.IlogService;
@@ -21,6 +22,7 @@ public class StatusLogController {
     private IlogService ilogService;
 
     @GetMapping("/getStatistics/{campaingId}")
+    @LogTime
     private List<LogModel> getStatusLog(@PathVariable Long campaingId){
         return  ilogService.getStatusLog(campaingId);
     }
