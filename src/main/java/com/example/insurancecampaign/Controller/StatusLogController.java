@@ -3,9 +3,7 @@ package com.example.insurancecampaign.Controller;
 
 import com.example.insurancecampaign.Annotations.LogTime;
 import com.example.insurancecampaign.Models.LogModel;
-import com.example.insurancecampaign.Models.StatisticsModel;
 import com.example.insurancecampaign.Service.IlogService;
-import com.example.insurancecampaign.Service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +20,6 @@ public class StatusLogController {
     private IlogService ilogService;
 
     @GetMapping("/getStatistics/{campaingId}")
-    @LogTime
     private List<LogModel> getStatusLog(@PathVariable Long campaingId){
         return  ilogService.getStatusLog(campaingId);
     }
