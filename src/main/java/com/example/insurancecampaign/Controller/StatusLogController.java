@@ -1,7 +1,6 @@
 package com.example.insurancecampaign.Controller;
 
 
-import com.example.insurancecampaign.Annotations.LogTime;
 import com.example.insurancecampaign.Models.LogModel;
 import com.example.insurancecampaign.Service.IlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/statusLog")
+@RequestMapping(ControllerUtils.LOG_COTROLLER_REQUEST_MAPPING)
 public class StatusLogController {
 
     @Autowired
     private IlogService ilogService;
 
-    @GetMapping("/getStatistics/{campaingId}")
+    @GetMapping(ControllerUtils.LOG_COTROLLER_STATISTICS_PATH)
     private List<LogModel> getStatusLog(@PathVariable Long campaingId){
         return  ilogService.getStatusLog(campaingId);
     }

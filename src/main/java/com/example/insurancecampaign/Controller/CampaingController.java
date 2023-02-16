@@ -1,10 +1,8 @@
 package com.example.insurancecampaign.Controller;
 
 
-import com.example.insurancecampaign.Annotations.LogTime;
 import com.example.insurancecampaign.Models.CampaingStatusModel;
 import com.example.insurancecampaign.Models.CampaingModel;
-import com.example.insurancecampaign.Models.CampaingQueryModel;
 import com.example.insurancecampaign.Models.StatisticsModel;
 import com.example.insurancecampaign.Service.ICampaingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ import java.text.ParseException;
 
 
 @RestController
-@RequestMapping("/Campaing")
+@RequestMapping(ControllerUtils.CAMPAING_COTROLLER_REQUEST_MAPPING)
 public class CampaingController {
 
     @Autowired
@@ -25,17 +23,17 @@ public class CampaingController {
     }
 
 
-    @PostMapping("/saveCampaing/")
+    @PostMapping(ControllerUtils.CAMPAING_COTROLLER_SAVE_PATH)
     private CampaingModel saveCampaing(@RequestBody CampaingModel campaingModel) throws ParseException {
         return  iCampaingService.saveCampaing(campaingModel);
     }
 
-    @PostMapping("/changeStatus/")
+    @PostMapping(ControllerUtils.CAMPAING_COTROLLER_STATUS_PATH)
     private CampaingModel changeStatus(@RequestBody CampaingStatusModel status) throws ParseException {
         return  iCampaingService.changeStatus(status);
     }
 
-    @GetMapping("/getStatistics/")
+    @GetMapping(ControllerUtils.CAMPAING_COTROLLER_STATISTICS_PATH)
     private StatisticsModel getStatistics(){
         return  iCampaingService.getStatistics();
     }
