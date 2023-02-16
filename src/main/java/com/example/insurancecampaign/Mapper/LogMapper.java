@@ -20,6 +20,7 @@ public class LogMapper {
         logModel.setNextStatus(logEntity.getNextStatus());
         logModel.setDetail(logEntity.getDetail());
         logModel.setCampaingId(logEntity.getCampaingId());
+        logModel.setCreatedDate(logEntity.getCreatedDate());
         return logModel;
     }
 

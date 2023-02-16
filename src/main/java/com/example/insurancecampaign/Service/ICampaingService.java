@@ -6,7 +6,6 @@ import com.example.insurancecampaign.Models.CampaingStatusModel;
 import com.example.insurancecampaign.Models.CampaingModel;
 import com.example.insurancecampaign.Models.StatisticsModel;
 
-import javax.persistence.Tuple;
 import java.text.ParseException;
 
 
