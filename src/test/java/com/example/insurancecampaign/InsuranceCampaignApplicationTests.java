@@ -4,8 +4,10 @@ import com.example.insurancecampaign.Enums.EnumCategory;
 import com.example.insurancecampaign.Enums.EnumStatus;
 import com.example.insurancecampaign.Models.CampaingModel;
 import com.example.insurancecampaign.Models.CampaingStatusModel;
+import com.example.insurancecampaign.Models.LogModel;
 import com.example.insurancecampaign.Models.StatisticsModel;
 import com.example.insurancecampaign.Service.ICampaingService;
+import com.example.insurancecampaign.Service.IlogService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
+import java.util.List;
 
 @SpringBootTest
 class InsuranceCampaignApplicationTests {
 
     @Autowired
     private ICampaingService iCampaingService;
+
+    @Autowired
+    private IlogService IlogService;
     private final CampaingModel model =new CampaingModel();
     @BeforeEach
     void contextLoads() {
@@ -28,6 +34,18 @@ class InsuranceCampaignApplicationTests {
         model.setCategory(EnumCategory.TSS);
         model.setStatus(EnumStatus.ONAY_BEKLIYOR);
     }
+    @Test
+    public void testlog() throws ParseException {
+        CampaingModel model =new CampaingModel();
+        model.setTitle("Deneme  Başlık deneme Başlık deneme");
+        model.setDetail("Deneme  Başlık deneme Başlık deneme Başlık deneme123123");
+        model.setCategory(EnumCategory.TSS);
+        model.setStatus(EnumStatus.ONAY_BEKLIYOR);
+        CampaingModel model1= iCampaingService.saveCampaing(model);
+        List<LogModel>  logModels= IlogService.getStatusLog(model1.getId());
+        Assertions.assertNotNull(logModels);
+    }
+
     @Test
     public void testSaveCampaing() throws ParseException {
         CampaingModel model1= iCampaingService.saveCampaing(model);
@@ -55,5 +73,6 @@ class InsuranceCampaignApplicationTests {
         StatisticsModel statisticsModel = iCampaingService.getStatistics();
         Assertions.assertNotNull(statisticsModel);
     }
+
 
 }
